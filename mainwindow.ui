@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>575</width>
-    <height>505</height>
+    <height>535</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -43,9 +43,48 @@
     </item>
     <item>
      <property name="text">
-      <string>hhh</string>
+      <string>Pic 10A. Introduction to Programming.</string>
      </property>
     </item>
+   </widget>
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>470</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Overall Score:</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioButton">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>400</y>
+      <width>100</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Schema A</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioButton_2">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>430</y>
+      <width>100</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Schema B</string>
+    </property>
    </widget>
    <widget class="QWidget" name="">
     <property name="geometry">
@@ -222,9 +261,9 @@
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>350</x>
       <y>90</y>
-      <width>191</width>
+      <width>211</width>
       <height>291</height>
      </rect>
     </property>
