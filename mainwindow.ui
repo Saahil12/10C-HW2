@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>624</width>
-    <height>564</height>
+    <width>575</width>
+    <height>505</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>50</y>
+      <y>40</y>
       <width>60</width>
       <height>16</height>
      </rect>
@@ -26,6 +26,26 @@
     <property name="text">
      <string>Course:</string>
     </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>40</y>
+      <width>381</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Pic 10B. Intermediate Programming.</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>hhh</string>
+     </property>
+    </item>
    </widget>
    <widget class="QWidget" name="">
     <property name="geometry">
@@ -202,7 +222,7 @@
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>370</x>
       <y>90</y>
       <width>191</width>
       <height>291</height>
@@ -268,7 +288,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>624</width>
+     <width>575</width>
      <height>22</height>
     </rect>
    </property>
