@@ -15,6 +15,12 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+signals:
+    void compute_overall();
+
+public slots:
+    void update_overall(int);
+
 private:
     Ui::MainWindow *ui;
 };

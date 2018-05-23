@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "grade_calculator.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
