@@ -19,7 +19,7 @@ signals:
     //void compute_overall();
 
 public slots:
-   // void update_overall(int);
+   void calc_overall();
 
 private:
     Ui::MainWindow *ui;
