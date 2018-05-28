@@ -16,10 +16,10 @@ public:
     ~MainWindow();
 
 signals:
-    void compute_overall();
+    //void compute_overall();
 
 public slots:
-    void update_overall(int);
+   // void update_overall(int);
 
 private:
     Ui::MainWindow *ui;
