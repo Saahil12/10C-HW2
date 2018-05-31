@@ -233,6 +233,7 @@ void MainWindow::reset()
     ui->horizontalSlider_11->setValue(0);
     ui->horizontalSlider_12->setValue(0);
     ui->horizontalSlider_13->setValue(0);
+    ui->label_14 -> setText("0");
 
     //spinBoxes are connected to horizontalSliders so no need to manually reset them
 
@@ -248,11 +249,11 @@ void MainWindow::reset()
             fromB_toA();
         }
 
-    /*
+
     else if(get_pic10()==2 && classLevel==0)
         {
             fromC_toA();
-        } */
+        }
     else if(get_pic10()==0 && classLevel==1)
         {
             fromA_toB();
@@ -307,6 +308,72 @@ void MainWindow::fromB_toA()
 
     //connect to A slots
     //calulate overall everytime spinBoxes values are changed or radioButtons are clicked
+    connect(ui->spinBox, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    connect(ui->spinBox_2, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    connect(ui->spinBox_3, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    connect(ui->spinBox_4, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    connect(ui->spinBox_5, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    connect(ui->spinBox_6, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    connect(ui->spinBox_7, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    connect(ui->spinBox_8, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    connect(ui->spinBox_9, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    connect(ui->spinBox_10, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    connect(ui->spinBox_11, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    connect(ui->spinBox_12, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    connect(ui->spinBox_13, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+
+    //click correct schema depending on midterm and final scores
+    connect(ui->spinBox_11, SIGNAL(valueChanged(int)), this, SLOT(schema_check()));
+    connect(ui->spinBox_12, SIGNAL(valueChanged(int)), this, SLOT(schema_check()));
+    connect(ui->spinBox_13, SIGNAL(valueChanged(int)), this, SLOT(schema_check()));
+
+    connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(reset()));
+}
+
+void MainWindow::fromC_toA()
+{
+    //change pic10 to 0
+    change_pic10(0);
+
+    //disconect C slots
+    disconnect(ui->spinBox, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10c()));
+    disconnect(ui->spinBox_2, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10c()));
+    disconnect(ui->spinBox_3, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10c()));
+    disconnect(ui->spinBox_4, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10c()));
+
+    //disconnect C slots
+    disconnect(ui->spinBox_11, SIGNAL(valueChanged(int)), this, SLOT(schema_check10c()));
+    disconnect(ui->spinBox_12, SIGNAL(valueChanged(int)), this, SLOT(schema_check10c()));
+
+    //rename and reappear needed objects
+    ui->label_4-> setText("Hw 4");
+    ui->label_12-> setText("Midterm 2");
+
+    ui->horizontalSlider_5->show();
+    ui->horizontalSlider_6->show();
+    ui->horizontalSlider_7->show();
+    ui->horizontalSlider_8->show();
+    ui->horizontalSlider_9->show();
+    ui->horizontalSlider_10->show();
+    ui->horizontalSlider_13->show();
+
+    ui->spinBox_5->show();
+    ui->spinBox_6->show();
+    ui->spinBox_7->show();
+    ui->spinBox_8->show();
+    ui->spinBox_9->show();
+    ui->spinBox_10->show();
+    ui->spinBox_13->show();
+
+    ui->label_5->show();
+    ui->label_6->show();
+    ui->label_7->show();
+    ui->label_8->show();
+    ui->label_9->show();
+    ui->label_10->show();
+    ui->label_13->show();
+
+    //calculate overall everytime spinBoxes values are changed or radioButtons are clicked
     connect(ui->spinBox, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
     connect(ui->spinBox_2, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
     connect(ui->spinBox_3, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
@@ -634,6 +701,8 @@ void MainWindow::fromA_toC()
     connect(ui->spinBox_11, SIGNAL(valueChanged(int)), this, SLOT(schema_check10c()));
     connect(ui->spinBox_12, SIGNAL(valueChanged(int)), this, SLOT(schema_check10c()));
 
+    //reset if comboBox changed
+    connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(reset()));
 }
 
 
