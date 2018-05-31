@@ -49,6 +49,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->horizontalSlider_6, SIGNAL(valueChanged(int)), ui->spinBox_6, SLOT(setValue(int)));
     connect(ui->horizontalSlider_7, SIGNAL(valueChanged(int)), ui->spinBox_7, SLOT(setValue(int)));
     connect(ui->horizontalSlider_8, SIGNAL(valueChanged(int)), ui->spinBox_8, SLOT(setValue(int)));
+    connect(ui->horizontalSlider_9, SIGNAL(valueChanged(int)), ui->spinBox_9, SLOT(setValue(int)));
+    connect(ui->horizontalSlider_10, SIGNAL(valueChanged(int)), ui->spinBox_10, SLOT(setValue(int)));
     connect(ui->horizontalSlider_11, SIGNAL(valueChanged(int)), ui->spinBox_11, SLOT(setValue(int)));
     connect(ui->horizontalSlider_12, SIGNAL(valueChanged(int)), ui->spinBox_12, SLOT(setValue(int)));
     connect(ui->horizontalSlider_13, SIGNAL(valueChanged(int)), ui->spinBox_13, SLOT(setValue(int)));
@@ -87,6 +89,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->spinBox_11, SIGNAL(valueChanged(int)), this, SLOT(schema_check()));
     connect(ui->spinBox_12, SIGNAL(valueChanged(int)), this, SLOT(schema_check()));
     connect(ui->spinBox_13, SIGNAL(valueChanged(int)), this, SLOT(schema_check()));
+
+    //reset() if comboBox changed
+    connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(reset()));
 }
 
 MainWindow::~MainWindow()
@@ -120,20 +125,22 @@ void MainWindow::calc_overall()
     total.push_back(ui->spinBox_6->value());
     total.push_back(ui->spinBox_7->value());
     total.push_back(ui->spinBox_8->value());
+    total.push_back(ui->spinBox_9->value());
+    total.push_back(ui->spinBox_10->value());
     total.push_back(ui->spinBox_11->value());
     total.push_back(ui->spinBox_12->value());
     total.push_back(ui->spinBox_13->value());
 
 
-    for (int i=0; i<=7; i++)
+    for (int i=0; i<=9; i++)
     {
         hw_score +=  total[i];
     }
 
-    hw_score = hw_score/8;
-    midterm1 = total[8];
-    midterm2 = total[9];
-    final = total[10];
+    hw_score = hw_score/10;
+    midterm1 = total[10];
+    midterm2 = total[11];
+    final = total[12];
 
     //calculate both grade_schemes
     double final_grade_scheme1 = .25*hw_score + .20*midterm1 + .20*midterm2 + .35*final;
@@ -221,6 +228,8 @@ void MainWindow::reset()
     ui->horizontalSlider_6->setValue(0);
     ui->horizontalSlider_7->setValue(0);
     ui->horizontalSlider_8->setValue(0);
+    ui->horizontalSlider_9->setValue(0);
+    ui->horizontalSlider_10->setValue(0);
     ui->horizontalSlider_11->setValue(0);
     ui->horizontalSlider_12->setValue(0);
     ui->horizontalSlider_13->setValue(0);
@@ -233,19 +242,22 @@ void MainWindow::reset()
     ui->radioButton_2->setEnabled(true);
 
     int classLevel = ui->comboBox->currentIndex();
-
+/*
     if(get_pic10()==1 && classLevel==0)
         {
             fromB_toA();
         }
+        */
+    /*
     else if(get_pic10()==2 && classLevel==0)
         {
             fromC_toA();
-        }
-    else if(get_pic10()==0 && classLevel==1)
+        } */
+    if (get_pic10()==0 && classLevel==1)
         {
             fromA_toB();
         }
+    /*
     else if(get_pic10()==2 && classLevel==1)
         {
             fromC_toB();
@@ -258,7 +270,171 @@ void MainWindow::reset()
         {
             fromB_toC();
         }
+    */
+}
+
+void MainWindow::calc_overall10b()
+{
+    double hw_score = 0;
+    double midterm1 = 0;
+    double midterm2 = 0;
+    double final = 0;
+    std::vector<double>scores;
+
+    scores.push_back(ui->spinBox->value());
+    scores.push_back(ui->spinBox_2->value());
+    scores.push_back(ui->spinBox_3->value());
+    scores.push_back(ui->spinBox_4->value());
+    scores.push_back(ui->spinBox_5->value());
+    scores.push_back(ui->spinBox_6->value());
+    scores.push_back(ui->spinBox_7->value());
+    scores.push_back(ui->spinBox_8->value());
+
+    int smallest_index = 0;
+    int temp_smallest = scores[0];
+    for(size_t i=0; i<=7; i++)
+    {
+        if (scores[i] < temp_smallest)
+            {
+                temp_smallest=scores[i];
+                smallest_index = i;
+            }
+    }
+
+    //set lowest score to 0 since it will be ignored
+    scores[smallest_index] = 0;
+
+    for(size_t x=0; x<=7; x++)
+    {
+        hw_score += scores[x];
+    }
+
+    //divide by 7 since lowest score is ignored
+    hw_score = hw_score/7;
+
+    midterm1 = ui->spinBox_11->value();
+    midterm2 = ui->spinBox_12->value();
+    final = ui->spinBox_13->value();
+
+    double final_grade_scheme1 = .25*hw_score + .20*midterm1 + .20*midterm2 + .35*final;
+
+    double final_grade_scheme2 = 0;
+    if (midterm1 > midterm2)
+        {
+            final_grade_scheme2 = .25*hw_score + .30*midterm1 + .44*final;
+        }
+    else
+        {
+            final_grade_scheme2 = .25*hw_score + .30*midterm2 + .44*final;
+        }
+
+    if(final_grade_scheme1 >= final_grade_scheme2)
+        {
+            ui->label_14->setText(QString::number(final_grade_scheme1));
+        }
+    else if(final_grade_scheme2 > final_grade_scheme1)
+        {
+            ui->label_14->setText(QString::number(final_grade_scheme2));
+        }
 
 }
+
+void MainWindow::schema_check10b()
+{
+    double midterm1 = 0;
+    double midterm2 = 0;
+    double final_exam = 0;
+    double highest_midterm = 0;
+
+    midterm1 = ui->spinBox_11->value();
+    midterm2 = ui->spinBox_12->value();
+    final_exam = ui->spinBox_13->value();
+
+    if(midterm1 > midterm2)
+        {
+            highest_midterm = midterm1;
+        }
+    else
+        {
+            highest_midterm = midterm2;
+        }
+
+    double schema1_total = .20*midterm1 + .20*midterm2 + .35*final_exam;
+    double schema2_total = .30*highest_midterm + .44*final_exam;
+
+    if(schema1_total > schema2_total)
+        {
+            ui->radioButton->click();
+            ui->radioButton->setChecked(true);
+            ui->radioButton_2->setDisabled(true);
+            ui->radioButton_2->setChecked(false);
+
+        }
+    else if (schema2_total > schema1_total)
+        {
+            ui->radioButton_2->click();
+            ui->radioButton_2->setChecked(true);
+            ui->radioButton->setDisabled(true);
+            ui->radioButton->setChecked(false);
+        }
+
+}
+
+void MainWindow::fromA_toB()
+{
+    //changr pic10 t0 1
+    change_pic10(1);
+
+    ui->horizontalSlider_9->hide();
+    ui->horizontalSlider_10->hide();
+    ui->spinBox_9->hide();
+    ui->spinBox_10->hide();
+    ui->label_9->hide();
+    ui->label_10->hide();
+
+    //disconnect from A slots
+    disconnect(ui->spinBox, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    disconnect(ui->spinBox_2, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    disconnect(ui->spinBox_3, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    disconnect(ui->spinBox_4, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    disconnect(ui->spinBox_5, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    disconnect(ui->spinBox_6, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    disconnect(ui->spinBox_7, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    disconnect(ui->spinBox_8, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    disconnect(ui->spinBox_9, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    disconnect(ui->spinBox_10, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    disconnect(ui->spinBox_11, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    disconnect(ui->spinBox_12, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+    disconnect(ui->spinBox_13, SIGNAL(valueChanged(int)), this, SLOT(calc_overall()));
+
+    //disconnect from A slots
+    disconnect(ui->spinBox_11, SIGNAL(valueChanged(int)), this, SLOT(schema_check()));
+    disconnect(ui->spinBox_12, SIGNAL(valueChanged(int)), this, SLOT(schema_check()));
+    disconnect(ui->spinBox_13, SIGNAL(valueChanged(int)), this, SLOT(schema_check()));
+
+    //calulate overall everytime spinBoxes values are changed or radioButtons are clicked
+    connect(ui->spinBox, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10b()));
+    connect(ui->spinBox_2, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10b()));
+    connect(ui->spinBox_3, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10b()));
+    connect(ui->spinBox_4, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10b()));
+    connect(ui->spinBox_5, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10b()));
+    connect(ui->spinBox_6, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10b()));
+    connect(ui->spinBox_7, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10b()));
+    connect(ui->spinBox_8, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10b()));
+    connect(ui->spinBox_11, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10b()));
+    connect(ui->spinBox_12, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10b()));
+    connect(ui->spinBox_13, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10b()));
+
+    //click correct schema depending on midterm and final scores
+    connect(ui->spinBox_11, SIGNAL(valueChanged(int)), this, SLOT(schema_check10b()));
+    connect(ui->spinBox_12, SIGNAL(valueChanged(int)), this, SLOT(schema_check10b()));
+    connect(ui->spinBox_13, SIGNAL(valueChanged(int)), this, SLOT(schema_check10b()));
+
+    //reset if comboBox changed
+    connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(reset()));
+
+}
+
+
 
 

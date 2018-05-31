@@ -25,14 +25,15 @@ public slots:
    void schema_check();
    void reset();
 
-   void fromB_toA();
-   void fromC_toA();
-
+   //void fromB_toA();
+   //void fromC_toA();
    void fromA_toB();
-   void fromC_toB();
+   //void fromC_toB();
+   //void fromA_toC();
+   //void fromB_toC();
 
-   void fromA_toC();
-   void fromB_toC();
+   void calc_overall10b();
+   void schema_check10b();
 
 private:
     Ui::MainWindow *ui;
