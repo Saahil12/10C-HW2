@@ -248,20 +248,22 @@ void MainWindow::reset()
         {
             fromB_toA();
         }
+
     else if(get_pic10()==2 && classLevel==0)
         {
             fromC_toA();
         }
+
     else if(get_pic10()==0 && classLevel==1)
         {
             fromA_toB();
         }
-    /*
+
     else if(get_pic10()==2 && classLevel==1)
         {
             fromC_toB();
         }
-        */
+
     else if(get_pic10()==0 && classLevel==2)
         {
             fromA_toC();
@@ -635,6 +637,18 @@ void MainWindow::fromA_toB()
 
 }
 
+void MainWindow::fromC_toB()
+{
+    fromC_toA();
+    fromA_toB();
+
+    //change pic10 to 2
+    change_pic10(1);
+
+    //reset if comboBox changed
+    connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(reset()));
+}
+
 
 void MainWindow::fromA_toC()
 {
@@ -712,6 +726,9 @@ void MainWindow::fromB_toC()
 
     //change pic10 to 2
     change_pic10(2);
+
+    //reset if comboBox changed
+    connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(reset()));
 }
 
 

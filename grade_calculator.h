@@ -27,7 +27,7 @@ public slots:
    void fromB_toA();
    void fromC_toA();
    void fromA_toB();
-   //void fromC_toB();
+   void fromC_toB();
    void fromA_toC();
    void fromB_toC();
 
