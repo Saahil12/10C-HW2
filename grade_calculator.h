@@ -18,7 +18,6 @@ public:
     void change_pic10(int x);
 
 signals:
-    //void compute_overall();
 
 public slots:
    void calc_overall();
@@ -29,11 +28,14 @@ public slots:
    //void fromC_toA();
    void fromA_toB();
    //void fromC_toB();
-   //void fromA_toC();
+   void fromA_toC();
    //void fromB_toC();
 
    void calc_overall10b();
    void schema_check10b();
+
+   void calc_overall10c();
+   void schema_check10c();
 
 private:
     Ui::MainWindow *ui;
