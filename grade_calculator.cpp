@@ -248,8 +248,6 @@ void MainWindow::reset()
         {
             fromB_toA();
         }
-
-
     else if(get_pic10()==2 && classLevel==0)
         {
             fromC_toA();
@@ -268,12 +266,11 @@ void MainWindow::reset()
         {
             fromA_toC();
         }
-    /*
+
     else if(get_pic10()==1 && classLevel==2)
         {
             fromB_toC();
         }
-    */
 }
 
 void MainWindow::fromB_toA()
@@ -638,6 +635,7 @@ void MainWindow::fromA_toB()
 
 }
 
+
 void MainWindow::fromA_toC()
 {
     //change pic10 to 2
@@ -696,6 +694,8 @@ void MainWindow::fromA_toC()
     connect(ui->spinBox_2, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10c()));
     connect(ui->spinBox_3, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10c()));
     connect(ui->spinBox_4, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10c()));
+    connect(ui->spinBox_11, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10c()));
+    connect(ui->spinBox_12, SIGNAL(valueChanged(int)), this, SLOT(calc_overall10c()));
 
     //click correct schema depending on midterm and final scores
     connect(ui->spinBox_11, SIGNAL(valueChanged(int)), this, SLOT(schema_check10c()));
@@ -703,6 +703,15 @@ void MainWindow::fromA_toC()
 
     //reset if comboBox changed
     connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(reset()));
+}
+
+void MainWindow::fromB_toC()
+{
+    fromB_toA();
+    fromA_toC();
+
+    //change pic10 to 2
+    change_pic10(2);
 }
 
 

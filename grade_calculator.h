@@ -29,7 +29,7 @@ public slots:
    void fromA_toB();
    //void fromC_toB();
    void fromA_toC();
-   //void fromB_toC();
+   void fromB_toC();
 
    void calc_overall10b();
    void schema_check10b();
