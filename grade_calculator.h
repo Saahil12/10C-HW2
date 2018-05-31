@@ -25,7 +25,7 @@ public slots:
    void schema_check();
    void reset();
 
-   //void fromB_toA();
+   void fromB_toA();
    //void fromC_toA();
    void fromA_toB();
    //void fromC_toB();
