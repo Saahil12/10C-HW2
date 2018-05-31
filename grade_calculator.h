@@ -14,6 +14,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    int get_pic10();
+    void change_pic10(int x);
 
 signals:
     //void compute_overall();
@@ -21,9 +23,20 @@ signals:
 public slots:
    void calc_overall();
    void schema_check();
+   void reset();
+
+   void fromB_toA();
+   void fromC_toA();
+
+   void fromA_toB();
+   void fromC_toB();
+
+   void fromA_toC();
+   void fromB_toC();
 
 private:
     Ui::MainWindow *ui;
+    int pic10 = 0;
 };
 
 #endif // MAINWINDOW_H

@@ -94,6 +94,16 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+int MainWindow::get_pic10()
+{
+    return pic10;
+}
+
+void MainWindow::change_pic10(int x)
+{
+    pic10 = x;
+}
+
 void MainWindow::calc_overall()
 {
     double hw_score = 0;
@@ -197,6 +207,56 @@ void MainWindow::schema_check()
             ui->radioButton_2->setChecked(true);
             ui->radioButton->setDisabled(true);
             ui->radioButton->setChecked(false);
+        }
+
+}
+
+void MainWindow::reset()
+{
+    ui->horizontalSlider->setValue(0);
+    ui->horizontalSlider_2->setValue(0);
+    ui->horizontalSlider_3->setValue(0);
+    ui->horizontalSlider_4->setValue(0);
+    ui->horizontalSlider_5->setValue(0);
+    ui->horizontalSlider_6->setValue(0);
+    ui->horizontalSlider_7->setValue(0);
+    ui->horizontalSlider_8->setValue(0);
+    ui->horizontalSlider_11->setValue(0);
+    ui->horizontalSlider_12->setValue(0);
+    ui->horizontalSlider_13->setValue(0);
+
+    //spinBoxes are connected to horizontalSliders so no need to manually reset them
+
+    ui->radioButton->setChecked(false);
+    ui->radioButton->setEnabled(true);
+    ui->radioButton_2->setChecked(false);
+    ui->radioButton_2->setEnabled(true);
+
+    int classLevel = ui->comboBox->currentIndex();
+
+    if(get_pic10()==1 && classLevel==0)
+        {
+            fromB_toA();
+        }
+    else if(get_pic10()==2 && classLevel==0)
+        {
+            fromC_toA();
+        }
+    else if(get_pic10()==0 && classLevel==1)
+        {
+            fromA_toB();
+        }
+    else if(get_pic10()==2 && classLevel==1)
+        {
+            fromC_toB();
+        }
+    else if(get_pic10()==0 && classLevel==2)
+        {
+            fromA_toC();
+        }
+    else if(get_pic10()==1 && classLevel==2)
+        {
+            fromB_toC();
         }
 
 }
