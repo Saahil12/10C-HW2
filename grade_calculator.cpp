@@ -143,29 +143,19 @@ void MainWindow::calc_overall()
     final = total[12];
 
     //calculate both grade_schemes
-    double final_grade_scheme1 = .25*hw_score + .20*midterm1 + .20*midterm2 + .35*final;
+    double final_grade_scheme1 = .30*hw_score + .20*midterm1 + .20*midterm2 + .30*final;
 
     double final_grade_scheme2 = 0;
     if (midterm1 > midterm2)
         {
-            final_grade_scheme2 = .25*hw_score + .30*midterm1 + .44*final;
+            final_grade_scheme2 = .30*hw_score + .30*midterm1 + .40*final;
         }
     else
         {
-            final_grade_scheme2 = .25*hw_score + .30*midterm2 + .44*final;
+            final_grade_scheme2 = .30*hw_score + .30*midterm2 + .40*final;
         }
 
-    //display correct score
-    /*
-    if(ui->radioButton->isChecked())
-        {
-            ui->label_14->setText(QString::number(final_grade_scheme1));
-        }
-    else if(ui ->radioButton_2 ->isChecked())
-        {
-            ui->label_14->setText(QString::number(final_grade_scheme2));
-        }
-*/
+
     if(final_grade_scheme1 >= final_grade_scheme2)
         {
             ui->label_14->setText(QString::number(final_grade_scheme1));
@@ -197,8 +187,8 @@ void MainWindow::schema_check()
             highest_midterm = midterm2;
         }
 
-    double schema1_total = .20*midterm1 + .20*midterm2 + .35*final_exam;
-    double schema2_total = .30*highest_midterm + .44*final_exam;
+    double schema1_total = .20*midterm1 + .20*midterm2 + .30*final_exam;
+    double schema2_total = .30*highest_midterm + .40*final_exam;
 
     if(schema1_total > schema2_total)
         {
