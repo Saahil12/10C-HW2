@@ -20,6 +20,7 @@ signals:
 
 public slots:
    void calc_overall();
+   void schema_check();
 
 private:
     Ui::MainWindow *ui;

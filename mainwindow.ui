@@ -14,19 +14,6 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QLabel" name="label_12">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>40</y>
-      <width>60</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Course:</string>
-    </property>
-   </widget>
    <widget class="QComboBox" name="comboBox">
     <property name="geometry">
      <rect>
@@ -38,33 +25,20 @@
     </property>
     <item>
      <property name="text">
-      <string>Pic 10B. Intermediate Programming.</string>
+      <string>Pic 10A. Introduction to Programming.</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Pic 10A. Introduction to Programming.</string>
+      <string>Pic 10B. Intermediate Programming.</string>
      </property>
     </item>
-   </widget>
-   <widget class="QLabel" name="label_13">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>470</y>
-      <width>101</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Overall Score:</string>
-    </property>
    </widget>
    <widget class="QRadioButton" name="radioButton">
     <property name="geometry">
      <rect>
       <x>350</x>
-      <y>400</y>
+      <y>380</y>
       <width>100</width>
       <height>20</height>
      </rect>
@@ -77,7 +51,7 @@
     <property name="geometry">
      <rect>
       <x>350</x>
-      <y>430</y>
+      <y>410</y>
       <width>100</width>
       <height>20</height>
      </rect>
@@ -86,54 +60,59 @@
      <string>Schema B</string>
     </property>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QLabel" name="label_course">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>40</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Course :</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_overallScore">
     <property name="geometry">
      <rect>
       <x>350</x>
-      <y>90</y>
-      <width>211</width>
-      <height>291</height>
+      <y>440</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Overall Score:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_14">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>440</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>91</y>
+      <width>191</width>
+      <height>271</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="QLabel" name="label_9">
-       <property name="text">
-        <string>Midterm 1</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSlider" name="horizontalSlider_9">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSpinBox" name="spinBox_9"/>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_10">
-       <property name="text">
-        <string>Midterm 2</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSlider" name="horizontalSlider_10">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSpinBox" name="spinBox_10"/>
-     </item>
-     <item>
       <widget class="QLabel" name="label_11">
        <property name="text">
-        <string>Final Exam</string>
+        <string>Midterm 1</string>
        </property>
       </widget>
      </item>
@@ -147,83 +126,173 @@
      <item>
       <widget class="QSpinBox" name="spinBox_11"/>
      </item>
+     <item>
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>Midterm 2</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="horizontalSlider_12">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBox_12"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string>Final Exam</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="horizontalSlider_13">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBox_13"/>
+     </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>90</y>
-      <width>34</width>
-      <height>291</height>
+      <x>280</x>
+      <y>99</y>
+      <width>50</width>
+      <height>366</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_4">
      <item>
-      <widget class="QLabel" name="label_5">
+      <widget class="QSpinBox" name="spinBox"/>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBox_2"/>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBox_3"/>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBox_4"/>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBox_5"/>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBox_6"/>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBox_7"/>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBox_8"/>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBox_9"/>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBox_10"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>100</y>
+      <width>41</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QLabel" name="label">
        <property name="text">
         <string>Hw 1</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_7">
+      <widget class="QLabel" name="label_2">
        <property name="text">
         <string>Hw 2</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_6">
+      <widget class="QLabel" name="label_3">
        <property name="text">
         <string>Hw 3</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="label_4">
        <property name="text">
         <string>Hw 4</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="label_5">
        <property name="text">
         <string>Hw 5</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_8">
+      <widget class="QLabel" name="label_6">
        <property name="text">
         <string>Hw 6</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_3">
+      <widget class="QLabel" name="label_7">
        <property name="text">
         <string>Hw 7</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_4">
+      <widget class="QLabel" name="label_8">
        <property name="text">
         <string>Hw 8</string>
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>Hw 9</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>Hw 10</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>94</y>
+      <y>100</y>
       <width>201</width>
-      <height>291</height>
+      <height>364</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -283,56 +352,21 @@
        </property>
       </widget>
      </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>281</x>
-      <y>94</y>
-      <width>51</width>
-      <height>291</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
-      <widget class="QSpinBox" name="spinBox"/>
+      <widget class="QSlider" name="horizontalSlider_9">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="QSpinBox" name="spinBox_2"/>
-     </item>
-     <item>
-      <widget class="QSpinBox" name="spinBox_3"/>
-     </item>
-     <item>
-      <widget class="QSpinBox" name="spinBox_4"/>
-     </item>
-     <item>
-      <widget class="QSpinBox" name="spinBox_5"/>
-     </item>
-     <item>
-      <widget class="QSpinBox" name="spinBox_6"/>
-     </item>
-     <item>
-      <widget class="QSpinBox" name="spinBox_7"/>
-     </item>
-     <item>
-      <widget class="QSpinBox" name="spinBox_8"/>
+      <widget class="QSlider" name="horizontalSlider_10">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
      </item>
     </layout>
-   </widget>
-   <widget class="QLabel" name="label_14">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>470</y>
-      <width>60</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
